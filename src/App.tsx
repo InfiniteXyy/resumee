@@ -1,45 +1,57 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import SimpleMDE from 'react-simplemde-editor'
+import 'easymde/dist/easymde.min.css'
+import create from 'zustand'
+import { persist, combine } from 'zustand/middleware'
+import { createTrackedSelector } from 'react-tracked'
+import { use, parse } from 'marked'
+import { useEffect } from 'react'
+import { Input, Section } from './components'
 
-function App() {
-  const [count, setCount] = useState(0)
+type ThemeConfig = { [key in 'heading']: string }
+const store = create(
+  persist(
+    combine(
+      {
+        resumeContent: '',
+        themeConfig: {} as ThemeConfig,
+      },
+      (set) => ({
+        setResumeContent: (resumeContent: string) => set({ resumeContent }),
+        setThemeConfig: (themeConfig: ThemeConfig) => set({ themeConfig }),
+      })
+    ),
+    { name: 'store' }
+  )
+)
+const useStore = createTrackedSelector(store)
+
+export function App() {
+  const { resumeContent, setResumeContent, themeConfig, setThemeConfig } = useStore()
+
+  useEffect(() => {
+    use({
+      renderer: {
+        heading(text, level) {
+          return `
+              <h${level} class="${themeConfig.heading}">
+                ${text}
+              </h${level}>`
+        },
+      },
+    })
+  }, [themeConfig.heading])
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div className="bg-light-400 h-full grid grid-cols-2 h-full children:h-full gap-2 p-2">
+      <Section>
+        <SimpleMDE onChange={setResumeContent} spellCheck={false} style={{ height: '100%' }} value={resumeContent} />
+      </Section>
+      <Section className="row-span-2">
+        <div dangerouslySetInnerHTML={{ __html: parse(resumeContent) }} />
+      </Section>
+      <Section>
+        <Input onChange={(e) => setThemeConfig({ heading: e.target.value })} value={themeConfig.heading} />
+      </Section>
     </div>
   )
 }
-
-export default App
