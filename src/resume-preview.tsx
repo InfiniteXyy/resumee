@@ -7,6 +7,16 @@ import { usePersistedStore, useWindiCSS } from './hooks'
 
 import 'tippy.js/dist/tippy.css'
 
+export function ResumePreviewDownload() {
+  return (
+    <Tippy content="打印成 PDF">
+      <button onClick={triggerPrintPdf} type="button">
+        <IconCloudDownload className="text-dark-50 h-4 w-4" />
+      </button>
+    </Tippy>
+  )
+}
+
 export function ResumePreview() {
   const { resumeContent, styleContent } = usePersistedStore()
 
@@ -29,17 +39,8 @@ export function ResumePreview() {
   const { generatedCSS } = useWindiCSS(htmlCode, styleContent)
 
   return (
-    <>
-      <header className="flex w-full justify-end gap-2 px-2 pt-2">
-        <Tippy content="打印成 PDF">
-          <button onClick={triggerPrintPdf} type="button">
-            <IconCloudDownload className="text-dark-50 h-4 w-4" />
-          </button>
-        </Tippy>
-      </header>
-      <div className="m-4 h-full w-full max-w-[800px]">
-        <IframePreview className="h-full w-full" css={generatedCSS} dark={false} fixedCss="" html={htmlCode} />
-      </div>
-    </>
+    <div className="m-4 h-full w-full max-w-[800px] md:m-0">
+      <IframePreview className="h-full w-full" css={generatedCSS} dark={false} fixedCss="" html={htmlCode} />
+    </div>
   )
 }

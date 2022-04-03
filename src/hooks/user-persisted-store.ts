@@ -8,7 +8,11 @@ const store = create(
     combine(defaultStore, (set) => ({
       setResumeContent: (resumeContent: string) => set({ resumeContent }),
       setStyleContent: (styleContent: string) => set({ styleContent }),
-      reset: () => set(defaultStore),
+      reset: (type: 'style' | 'resume') => {
+        type === 'style'
+          ? set({ styleContent: defaultStore.styleContent })
+          : set({ resumeContent: defaultStore.resumeContent })
+      },
     })),
     { name: 'store', version: 5 }
   )

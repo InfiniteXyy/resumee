@@ -5,7 +5,7 @@ export function Section({ children, className, ...props }: React.ComponentProps<
   return (
     <section
       className={clsx(
-        'flex h-full flex-col overflow-hidden rounded bg-white shadow-md dark:bg-dark-500 dark:text-white',
+        'flex h-full flex-col overflow-hidden rounded-md bg-white shadow-md dark:bg-dark-500 dark:text-white',
         className
       )}
       {...props}

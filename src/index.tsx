@@ -4,7 +4,7 @@ import IconSun from '~icons/carbon/sun'
 import { Section } from './components'
 import './components/scrollbar.css'
 import { ResumeEditor } from './resume-editor'
-import { ResumePreview } from './resume-preview'
+import { ResumePreview, ResumePreviewDownload } from './resume-preview'
 import 'virtual:windi.css'
 import './index.css'
 import { useDarkMode } from './hooks'
@@ -28,11 +28,14 @@ export function App() {
           {isDarkMode ? <IconSun /> : <IconMoon />}
         </button>
       </header>
-      <main className="children:h-full mx-auto grid h-full h-full w-full max-w-[1600px] grid-cols-2 gap-4 overflow-hidden p-4 md:grid-cols-1">
+      <main className="children:h-full mx-auto grid h-full h-full w-full max-w-[1600px] grid-cols-2 gap-4 overflow-hidden p-4 md:p-0 md:grid-cols-1">
         <Section>
           <ResumeEditor />
         </Section>
         <Section className="items-center !bg-white md:hidden">
+          <header className="flex w-full justify-end gap-2 px-2 pt-2">
+            <ResumePreviewDownload />
+          </header>
           <ResumePreview />
         </Section>
       </main>
