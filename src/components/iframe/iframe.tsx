@@ -44,7 +44,7 @@ export function IframePreview(props: IframePreviewProps) {
   return (
     <div className="h-full">
       <iframe
-        className="h-full w-full bg-transparent"
+        className="h-full w-full bg-white"
         onLoad={() => setIsReady(true)}
         ref={sandboxRef}
         sandbox={[

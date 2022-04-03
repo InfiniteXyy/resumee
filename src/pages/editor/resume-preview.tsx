@@ -4,11 +4,11 @@ import IconCloudDownload from '~icons/carbon/cloud-download'
 import { IframePreview, triggerPrintPdf } from '@/components'
 import { usePersistedStore, useWindiCSS } from '@/hooks'
 
-export function ResumePreviewDownload() {
+export function ResumePreviewDownload(props: { className?: string }) {
   return (
     <Tippy content="打印成 PDF">
-      <button onClick={triggerPrintPdf} type="button">
-        <IconCloudDownload className="text-dark-50 h-4 w-4" />
+      <button className={props.className} onClick={triggerPrintPdf} type="button">
+        <IconCloudDownload className="h-4 w-4" />
       </button>
     </Tippy>
   )

@@ -10,7 +10,7 @@ export function EditorPage() {
       </Section>
       <Section className="items-center !bg-white md:hidden">
         <header className="flex w-full justify-end gap-2 px-2 pt-2">
-          <ResumePreviewDownload />
+          <ResumePreviewDownload className="text-dark-50" />
         </header>
         <ResumePreview />
       </Section>

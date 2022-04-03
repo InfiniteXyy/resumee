@@ -1,10 +1,9 @@
 import Tippy from '@tippyjs/react'
 import useMedia from 'use-media'
-import IconCloudDownload from '~icons/carbon/cloud-download'
 import IconReset from '~icons/carbon/reset'
-import { Editor, Tabs, triggerPrintPdf } from '@/components'
+import { Editor, Tabs } from '@/components'
 import { usePersistedStore, useWindiProcessor } from '@/hooks'
-import { ResumePreview } from './resume-preview'
+import { ResumePreview, ResumePreviewDownload } from './resume-preview'
 
 export function ResumeEditor() {
   const { resumeContent, styleContent, setResumeContent, setStyleContent, reset } = usePersistedStore()
@@ -30,16 +29,12 @@ export function ResumeEditor() {
           ]}
         />
 
-        <div className="text-dark-50 ml-auto flex gap-2">
-          <Tippy content="打印成 PDF">
-            <button className="hidden md:block" onClick={triggerPrintPdf} type="button">
-              <IconCloudDownload className="h-4 w-4" />
-            </button>
-          </Tippy>
-
+        <div className="text-dark-50 ml-auto flex gap-4">
+          <ResumePreviewDownload className="text-dark-50 dark:text-light-100 hidden md:block " />
           {tab !== 'preview' && (
             <Tippy content={tab === 'resume' ? '恢复默认简历模板' : '恢复默认样式'}>
               <button
+                className="text-dark-50 dark:text-light-100 "
                 onClick={() => {
                   // eslint-disable-next-line no-alert
                   if (confirm('确定要恢复成默认吗？现在的内容将无法恢复！')) {
