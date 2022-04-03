@@ -7,7 +7,11 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@codemirror/autocomplete": "^0.19.15",
+    "@codemirror/lang-css": "^0.19.3",
     "@codemirror/lang-markdown": "^0.19.6",
+    "@codemirror/tooltip": "^0.19.16",
+    "@codemirror/view": "^0.19.48",
     "@tippyjs/react": "^4.2.6",
     "@uiw/react-codemirror": "^4.5.3",
     "clsx": "^1.1.1",
@@ -16,6 +20,7 @@
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-tracked": "^1.7.8",
+    "tippy.js": "^6.3.7",
     "windicss": "^3.5.1",
     "zustand": "^3.7.1"
   },
