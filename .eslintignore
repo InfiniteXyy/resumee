@@ -1,3 +1,6 @@
 vite.config.ts
 node_modules
 .eslintrc.js
+windi.config.ts
+auto-import.d.ts
+prettier.config.js

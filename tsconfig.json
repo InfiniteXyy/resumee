@@ -8,12 +8,9 @@
       "DOM.Iterable",
       "ESNext"
     ],
-    "allowJs": false,
-    "skipLibCheck": false,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "unplugin-icons/types/react"
+    ],
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,

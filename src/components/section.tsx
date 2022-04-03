@@ -1,9 +1,15 @@
-import clsx from 'clsx'
 import React from 'react'
+import clsx from 'clsx'
 
 export function Section({ children, className, ...props }: React.ComponentProps<'section'>) {
   return (
-    <section className={clsx('rounded shadow-sm p-4 bg-white overflow-hidden', className)} {...props}>
+    <section
+      className={clsx(
+        'flex h-full flex-col overflow-hidden rounded bg-white shadow-md dark:bg-dark-500 dark:text-white',
+        className
+      )}
+      {...props}
+    >
       {children}
     </section>
   )

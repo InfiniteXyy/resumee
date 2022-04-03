@@ -1,0 +1,47 @@
+.cm-editor {
+  height: 100%;
+  width: 100%;
+}
+
+.cm-content {
+  font-size: 14px;
+  font-family: 'Menlo', 'FiraCode', 'Sarasa Mono SC', monospace;
+  line-height: 1.6;
+}
+
+.cm-editor.cm-focused {
+  outline: none !important;
+}
+
+.cm-scroller {
+  outline: none;
+}
+
+.cm-tooltip {
+  @apply border-light-500 !rounded-sm border-[0.5px] !bg-white shadow-md;
+}
+
+.cm-completionLabel {
+  font-family: 'Menlo', 'FiraCode', 'Sarasa Mono SC', monospace;
+}
+
+.cm-editor.cm-focused .cm-selectionBackground,
+.cm-editor ::selection {
+  @apply bg-blue-100;
+}
+.cm-editor.cm-focused .cm-cursor {
+  @apply border-dark-900 border-l-2 pr-2;
+}
+
+.cm-editor .cm-gutters {
+  background: transparent;
+  border-right: none;
+  padding: 0 0.5rem;
+  @apply dark:bg-dark-500 bg-white;
+}
+.cm-editor .cm-foldPlaceholder {
+  background: transparent;
+  /* border: 1px solid var(--prism-punctuation);
+  color: var(--prism-punctuation); */
+  margin: 1px 4px;
+}
