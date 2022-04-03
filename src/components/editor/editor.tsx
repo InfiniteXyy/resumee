@@ -5,7 +5,7 @@ import { EditorView } from '@codemirror/view'
 import './editor.css'
 import { memo } from 'react'
 import { autocompletion } from '@codemirror/autocomplete'
-import { useDarkMode } from '../hooks'
+import { useDarkMode } from '@/hooks'
 import { hoverPreview } from './editor-hover-preview'
 import type Processor from 'windicss'
 

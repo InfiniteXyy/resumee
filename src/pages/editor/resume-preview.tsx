@@ -1,11 +1,8 @@
 import { marked } from 'marked'
 import Tippy from '@tippyjs/react'
 import IconCloudDownload from '~icons/carbon/cloud-download'
-import { IframePreview, triggerPrintPdf } from './components'
-import './components/scrollbar.css'
-import { usePersistedStore, useWindiCSS } from './hooks'
-
-import 'tippy.js/dist/tippy.css'
+import { IframePreview, triggerPrintPdf } from '@/components'
+import { usePersistedStore, useWindiCSS } from '@/hooks'
 
 export function ResumePreviewDownload() {
   return (

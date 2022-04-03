@@ -2,9 +2,8 @@ import Tippy from '@tippyjs/react'
 import useMedia from 'use-media'
 import IconCloudDownload from '~icons/carbon/cloud-download'
 import IconReset from '~icons/carbon/reset'
-import { Editor, Tabs, triggerPrintPdf } from './components'
-import './components/scrollbar.css'
-import { usePersistedStore, useWindiProcessor } from './hooks'
+import { Editor, Tabs, triggerPrintPdf } from '@/components'
+import { usePersistedStore, useWindiProcessor } from '@/hooks'
 import { ResumePreview } from './resume-preview'
 
 export function ResumeEditor() {
