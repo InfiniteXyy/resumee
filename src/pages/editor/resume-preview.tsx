@@ -4,8 +4,8 @@ import { useCurrentDraft, useParseHTMLCode } from '@/hooks'
 
 export function ResumePreviewDownload(props: { className?: string }) {
   return (
-    <Tooltip title="打印成 PDF">
-      <button className={props.className} onClick={triggerPrintPdf} type="button">
+    <Tooltip title="打印 PDF">
+      <button aria-label="打印 PDF" className={props.className} onClick={triggerPrintPdf} type="button">
         <IconCloudDownload className="h-4 w-4" />
       </button>
     </Tooltip>

@@ -9,8 +9,8 @@ interface TabsProps<T extends string> {
 export function Tabs<T extends string>(props: TabsProps<T>) {
   const { currentTab, setTab, tabs } = props
   return (
-    <div className="flex gap-2">
-      {tabs.map((tab, index) => (
+    <div className="flex gap-2" role="tablist">
+      {tabs.map((tab) => (
         <button
           className={clsx(
             'inline-block rounded-lg py-1 px-2 text-xs font-medium transition',
@@ -21,7 +21,6 @@ export function Tabs<T extends string>(props: TabsProps<T>) {
           key={tab.value}
           onClick={() => setTab(tab.value)}
           role="tab"
-          tabIndex={index}
           type="button"
         >
           {tab.label}

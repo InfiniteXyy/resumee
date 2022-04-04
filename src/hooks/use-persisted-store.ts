@@ -21,7 +21,7 @@ interface StoreState {
   newResume: () => void
 }
 
-const defaultResumes: ResumeItem[] = [{ id: 'default', ...defaultResume }]
+const defaultResumes: ResumeItem[] = [{ id: 'default', resumeContent: defaultResume.resumeContent, styleContent: '' }]
 const useStore = create(
   persist<StoreState>(
     (set) => ({
@@ -63,6 +63,8 @@ const useStore = create(
       deleteResume: (resumeId) => {
         set(
           produce((state: StoreState) => {
+            // eslint-disable-next-line no-alert
+            if (!confirm('确定要删除这个简历吗？')) return
             if (state.resumes.length === 1) return
             state.resumes = state.resumes.filter((i) => i.id !== resumeId)
             if (state.currentResumeId === resumeId) {
