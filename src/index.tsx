@@ -5,7 +5,7 @@ import IconMoon from '~icons/carbon/moon'
 import IconSun from '~icons/carbon/sun'
 import IconMenu from '~icons/carbon/menu'
 import './components/scrollbar.css'
-import { EditorPage, ExplorePage } from './pages'
+import { EditorPage, ExplorePage, VersionsPage } from './pages'
 import 'virtual:windi.css'
 import './index.css'
 import { useDarkMode } from './hooks'
@@ -47,6 +47,7 @@ export function App() {
         <Routes>
           <Route element={<EditorPage />} path="/" />
           <Route element={<ExplorePage />} path="/explore" />
+          <Route element={<VersionsPage />} path="/versions" />
         </Routes>
       </div>
     </BrowserRouter>
