@@ -3,7 +3,7 @@ import create from 'zustand'
 import { persist } from 'zustand/middleware'
 import { produce } from 'immer'
 import { nanoid } from 'nanoid'
-import { defaultResume } from '../constants'
+import { defaultResume, simpleResumeContent } from '../constants'
 
 export interface ResumeItem {
   resumeContent: string
@@ -75,7 +75,7 @@ const useStore = create(
         set(
           produce((state: StoreState) => {
             const newId = nanoid()
-            state.resumes.unshift({ id: newId, resumeContent: `---\ntitle:新简历\n---`, styleContent: '' })
+            state.resumes.unshift({ id: newId, resumeContent: simpleResumeContent, styleContent: '' })
             state.currentResumeId = newId
           })
         )

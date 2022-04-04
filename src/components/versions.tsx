@@ -22,8 +22,9 @@ function VersionCard(props: { item: ResumeItem }) {
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       className={clsx(
-        'hover:bg-light-600 dark:hover:bg-dark-600 text-dark-500 dark:text-light-400 w-50 cursor-pointer overflow-hidden rounded px-2 py-2 transition',
-        isEditing && 'bg-light-500 dark:bg-dark-600 font-bold'
+        'hover:bg-light-600 dark:hover:bg-dark-600 w-50 cursor-pointer overflow-hidden rounded px-2 py-2 transition',
+        isEditing ? 'text-dark-400 dark:text-light-400 font-bold' : 'text-true-gray-400 dark:text-true-gray-500'
+
       )}
       onClick={onSwitch}
       role="button"
