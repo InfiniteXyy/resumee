@@ -9,7 +9,7 @@ import { useDarkMode } from '@/hooks'
 import { hoverPreview } from './editor-hover-preview'
 import type Processor from 'windicss'
 
-interface EditorProps {
+export interface EditorProps {
   language: 'css' | 'markdown'
   value: string
   onChange: (value: string) => void

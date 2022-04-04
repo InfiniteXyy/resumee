@@ -1,10 +1,12 @@
 import useMedia from 'use-media'
-import { Editor, Tabs } from '@/components'
-import { usePersistedStore, useWindiProcessor } from '@/hooks'
+import { Dropdown, Editor, Tabs, Versions } from '@/components'
+import { useCurrentDraft, usePersistedStore, useWindiProcessor } from '@/hooks'
+import IconChevronRight from '~icons/carbon/chevron-right'
 import { ResumePreview, ResumePreviewDownload } from './resume-preview'
 
 export function ResumeEditor() {
-  const { resumeContent, styleContent, setResumeContent, setStyleContent } = usePersistedStore()
+  const { setResumeContent, setStyleContent } = usePersistedStore()
+  const draft = useCurrentDraft()
   const { processor } = useWindiProcessor()
 
   const [tab, setTab] = useState<'resume' | 'style' | 'preview'>('resume')
@@ -29,14 +31,23 @@ export function ResumeEditor() {
 
         <div className="text-dark-50 ml-auto flex gap-4">
           {tab === 'preview' && <ResumePreviewDownload className="text-dark-50 dark:text-light-100 hidden md:block " />}
+          <Dropdown overlay={<Versions />} placement="bottom-end">
+            <button
+              className="dark:text-light-500 hover:bg-light-400 focus:bg-light-400 flex items-center gap-1 rounded px-2 py-1 text-gray-500 transition dark:hover:bg-gray-600 dark:focus:bg-gray-600"
+              type="button"
+            >
+              <span className="text-xs font-bold">管理简历</span>
+              <IconChevronRight className="h-3 w-3" />
+            </button>
+          </Dropdown>
         </div>
       </header>
       <main className="children:h-full h-full overflow-hidden">
         {tab === 'resume' && (
-          <Editor language="markdown" onChange={setResumeContent} processor={processor} value={resumeContent} />
+          <Editor language="markdown" onChange={setResumeContent} processor={processor} value={draft.resumeContent} />
         )}
         {tab === 'style' && (
-          <Editor language="css" onChange={setStyleContent} processor={processor} value={styleContent} />
+          <Editor language="css" onChange={setStyleContent} processor={processor} value={draft.styleContent} />
         )}
         {tab === 'preview' && <ResumePreview />}
       </main>

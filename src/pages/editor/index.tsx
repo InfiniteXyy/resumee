@@ -4,7 +4,7 @@ import { ResumePreview, ResumePreviewDownload } from './resume-preview'
 
 export function EditorPage() {
   return (
-    <main className="children:h-full mx-auto grid h-full h-full w-full max-w-[1600px] grid-cols-2 gap-4 overflow-hidden p-4 md:grid-cols-1 md:p-0">
+    <div className="children:h-full grid h-full w-full grid-cols-2 gap-4 overflow-hidden p-4 md:grid-cols-1 md:p-0">
       <Section>
         <ResumeEditor />
       </Section>
@@ -14,6 +14,6 @@ export function EditorPage() {
         </header>
         <ResumePreview />
       </Section>
-    </main>
+    </div>
   )
 }

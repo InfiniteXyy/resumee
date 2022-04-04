@@ -1,39 +1,21 @@
-import { marked } from 'marked'
-import Tippy from '@tippyjs/react'
 import IconCloudDownload from '~icons/carbon/cloud-download'
-import { IframePreview, triggerPrintPdf } from '@/components'
-import { usePersistedStore, useWindiCSS } from '@/hooks'
+import { IframePreview, Tooltip, triggerPrintPdf } from '@/components'
+import { useCurrentDraft, useParseHTMLCode } from '@/hooks'
 
 export function ResumePreviewDownload(props: { className?: string }) {
   return (
-    <Tippy content="打印成 PDF">
+    <Tooltip title="打印成 PDF">
       <button className={props.className} onClick={triggerPrintPdf} type="button">
         <IconCloudDownload className="h-4 w-4" />
       </button>
-    </Tippy>
+    </Tooltip>
   )
 }
 
 export function ResumePreview() {
-  const { resumeContent, styleContent } = usePersistedStore()
+  const { resumeContent, styleContent } = useCurrentDraft()
 
-  const htmlCode = useMemo(() => {
-    const matchedConfig = /^-+$\n(?<config>[^]+)\n^-+$/m.exec(resumeContent)
-
-    const config = (matchedConfig?.groups?.config ?? '').split('\n').reduce((prev: { [key: string]: string }, cur) => {
-      const [key, value] = cur
-        .trim()
-        .split(':')
-        .map((i) => i.trim())
-      if (key && value) prev[key] = value
-      return prev
-    }, {})
-    return `${config.title ? `<div class="title">${config.title}</div>` : ''}${marked.parse(
-      resumeContent.replace(/^-+$\n(?<config>[^]+)\n^-+$/m, '')
-    )}`
-  }, [resumeContent])
-
-  const { generatedCSS } = useWindiCSS(htmlCode, styleContent)
+  const { generatedCSS, htmlCode } = useParseHTMLCode(resumeContent, styleContent)
 
   return (
     <div className="m-4 h-full w-full max-w-[800px] md:m-0">

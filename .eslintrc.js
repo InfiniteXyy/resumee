@@ -7,6 +7,8 @@ module.exports = {
   rules: {
     '@typescript-eslint/consistent-indexed-object-style': 'off',
     '@typescript-eslint/consistent-type-assertions': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
   },
   parserOptions: {
     tsconfigRootDir: __dirname,

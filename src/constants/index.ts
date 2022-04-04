@@ -1,1 +1,1 @@
-export * from './default-store'
+export * from './default-resume'
